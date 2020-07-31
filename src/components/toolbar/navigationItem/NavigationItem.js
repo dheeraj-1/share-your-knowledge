@@ -1,6 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'; 
-import classes from './NavigationItem.css';
+//import classes from './NavigationItem.css';
+import classes from './style.module.css';
+
+//import classes from './NavigationItem.css';
 
 const navigationItem = (props) => {
     return (

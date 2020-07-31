@@ -1,6 +1,5 @@
-.NavigationItems {
-    display: flex;
-    flex-flow: row;
-    position: fixed;
-    left: 70%;
+.Toolbar {
+    height: 50px;
+    width: 100%;
+    background-color: lightgreen;
 }
