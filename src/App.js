@@ -1,10 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import PropTypes from 'prop-types';
 
 import Toolbar from './components/toolbar/Toolbar';
-
+import HeaderContent from './components/header/HeaderContent';
+import MainContent from './components/mainContent/MainContent';
 // function App(props) {
 //   return (
 //     <div className="App">
@@ -12,14 +12,26 @@ import Toolbar from './components/toolbar/Toolbar';
 //     </div>
 //   );
 // }
+
+const articles = [
+    {title:'javascript', content:'details of javascript', author:'Shyam'},
+    {title:'Env', content:'details of Emvironment science', author:'Shivam'},
+    {title:'Social Science', content:'details of Socioloyg', author:'Rashmi'},
+    {title:'Maths', content:'details of Mathematics', author:'Saurabh'},
+    {title:'Politics', content:'details of Politics', author:'Archana'},
+    {title:'Biology', content:'details of Biology', author:'Shivam'}
+  ];
+
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
+      <div>
         <Toolbar></Toolbar>
-        <div>Header Content</div>
-        <div> Main Content</div>
-        <div onClick={this.props.onClick}>This div is clicked {this.props.counter} times!!</div>
+        
+        <HeaderContent></HeaderContent>
+        <MainContent articles={articles}>
+          
+        </MainContent>
       </div>
     );
   }

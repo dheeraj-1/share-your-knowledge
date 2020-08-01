@@ -12,7 +12,7 @@ var model = {
 function renderView() {
   ReactDOM.render(
     <React.StrictMode>
-      <App counter={model.counter} onClick={() => {model.counter += 1; renderView();}}/>
+      <App/>
     </React.StrictMode>,
     document.getElementById('root')
   );
