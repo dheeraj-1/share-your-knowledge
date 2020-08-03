@@ -4,16 +4,23 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { render } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import authReducer from './store/reducers/authReducer';
 
 
-var model = {
-  counter: -1
-}
+const store = createStore(authReducer);
+
+const app = (
+  <Provider store = {store}>
+    <BrowserRouter><App/></BrowserRouter>
+  </Provider>
+);
+
 function renderView() {
   ReactDOM.render(
-    <React.StrictMode>
-      <App/>
-    </React.StrictMode>,
+    app,
     document.getElementById('root')
   );
 }

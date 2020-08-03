@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css';
 import PropTypes from 'prop-types';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Toolbar from './components/toolbar/Toolbar';
 import HeaderContent from './components/header/HeaderContent';
 import MainContent from './components/mainContent/MainContent';
+import SignIn from './components/SignIn/SignIn';
+import SignUp from './components/SignUp/SignUp';
 // function App(props) {
 //   return (
 //     <div className="App">
@@ -27,11 +30,14 @@ class App extends React.Component {
     return (
       <div>
         <Toolbar></Toolbar>
-        
         <HeaderContent></HeaderContent>
-        <MainContent articles={articles}>
-          
-        </MainContent>
+        <Switch>
+          <Route path="/signin" component={SignIn}/>
+          <Route path="/signup" component={SignUp}/>
+          <Route path="/" render={() => <MainContent articles={articles}></MainContent>}/>
+          <Redirect to="/" />
+        </Switch>       
+        
       </div>
     );
   }
