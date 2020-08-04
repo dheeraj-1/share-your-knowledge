@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+
 import authReducer from './store/reducers/authReducer';
 
 
-const store = createStore(authReducer);
+const store = createStore(authReducer, applyMiddleware(thunk));
 
 const app = (
   <Provider store = {store}>

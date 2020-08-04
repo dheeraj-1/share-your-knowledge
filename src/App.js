@@ -8,6 +8,7 @@ import HeaderContent from './components/header/HeaderContent';
 import MainContent from './components/mainContent/MainContent';
 import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp/SignUp';
+
 // function App(props) {
 //   return (
 //     <div className="App">
@@ -28,15 +29,18 @@ const articles = [
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <div className="App">
         <Toolbar></Toolbar>
         <HeaderContent></HeaderContent>
-        <Switch>
-          <Route path="/signin" component={SignIn}/>
-          <Route path="/signup" component={SignUp}/>
-          <Route path="/" render={() => <MainContent articles={articles}></MainContent>}/>
-          <Redirect to="/" />
-        </Switch>       
+         
+        <main className="MainContent">
+          <Switch>
+            <Route path="/signin" component={SignIn}/>
+            <Route path="/signup" component={SignUp}/>
+            <Route path="/" render={() => <MainContent articles={articles}></MainContent>}/>
+            <Redirect to="/" />
+          </Switch> 
+        </main>     
         
       </div>
     );

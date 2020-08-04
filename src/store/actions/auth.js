@@ -1,3 +1,4 @@
+import axios from 'axios';
 import * as actionTypes from './actionTypes';
 import { act } from 'react-dom/test-utils';
 
@@ -6,19 +7,20 @@ export const auth = (userName, email, password) => {
         var temp = Math.floor(Math.random() * 10 );
         const authData = {
             user: {
-                userName: userName,
+                username: userName,
                 email: email,
                 password: password
             }
         }
-        console.log("Received to send to server", authData, temp);
-        
-        if(temp < 6) {
-            dispatch(authSuccess());
-        }   
-        else {
-            dispatch(authFail());
-        }
+        axios.post('https://conduit.productionready.io/api/users', authData)
+                .then(res => {
+                    console.log("Signup success", res);
+                    dispatch(authSuccess(res.user.token, res.user.id, res.user.username));
+                })
+                .catch(err => {
+                    console.log("Error occured while sign up", err);
+                    dispatch(authFail(err));
+                });
     }
 }
 

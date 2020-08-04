@@ -12,9 +12,23 @@ class SignUp extends Component {
         email: '',
         password: ''
     }
+
+    componentDidMount() {
+        console.log("componentdidmount: ", this.props.isAuthenticated, this.props.error);
+    }
+
     render() {
+
+        let errorMessage = null;
+        if(this.props.error) {
+            errorMessage = (
+                <p>User already exists!</p>
+            )
+        }
+
         return(
             <div className={classes.SignUp}>
+                {errorMessage}
                 <form onSubmit={this.submitHandler}>
                     <h2>Sign Up</h2>
                     <input type="text"
@@ -58,14 +72,15 @@ const mapStateToProps = state => {
         token: state.token,
         userId: state.userId,
         userName: state.userName,
-        isAuthenticated: state.token !== null
+        isAuthenticated: state.token !== null,
+        error: state.error
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        //onAuth: (userName, email, password) => dispatch(actions.auth(userName, email, password))
-        onAuth: (userName, email, password) => dispatch({type:"START", userName:userName, email: email, password:password})
+        onAuth: (userName, email, password) => dispatch(actions.auth(userName, email, password))
+        //onAuth: (userName, email, password) => dispatch({type:"START", userName:userName, email: email, password:password})
     }
 }
 

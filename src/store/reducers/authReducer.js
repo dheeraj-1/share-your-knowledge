@@ -5,7 +5,8 @@ import { act } from 'react-dom/test-utils';
 const initialState = {
     token: null,
     userId: null,
-    userName: null
+    userName: null,
+    error: null
 }
 
 const authSuccess = (state, action) => {
