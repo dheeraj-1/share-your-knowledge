@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+
+import * as actions from '../../store/actions/auth';
 
 import classes from './SignIn.module.css';
 
@@ -8,8 +12,23 @@ class SignIn extends Component {
         password: ''
     }
     render() {
+        let errorMessage = null;
+        if(this.props.error) {
+            errorMessage = (
+                <p>Username or Password is incorrect!</p>
+            )
+        }
+
+        let redirectToLoggedInUsers = null;
+        if(this.props.isAuthenticated) {
+            redirectToLoggedInUsers = (
+                <Redirect to="/"/>
+            )
+        }
         return(
             <div className={classes.SignIn}>
+                {redirectToLoggedInUsers}
+                {errorMessage}
                 <form onSubmit={this.submitHandler}>
                     <h2>Sign In</h2>
                     <input type="text" name="email" onChange={(event) => this.changeHandler(event, "email")} value={this.state.email} placeholder="Email"></input><br/>
@@ -28,7 +47,25 @@ class SignIn extends Component {
     submitHandler = (event) => {
         event.preventDefault();
         console.log('Form submitted', this.state);
+        this.props.onAuth(null, this.state.email, this.state.password, false);
     }
 }
 
-export default SignIn;
+
+const mapStateToProps = state => {
+    return {
+        token: state.token,
+        userName: state.userName,
+        userId: state.userId,
+        isAuthenticated: state.token !== null,
+        error: state.error
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onAuth: (username, email, password, isSignup) => dispatch(actions.auth(username, email, password, isSignup))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

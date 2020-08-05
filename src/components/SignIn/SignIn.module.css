@@ -19,3 +19,7 @@
 .SignIn input:focus {
     background-color: lightgray;
 }
+
+.SignIn p {
+    color: red;
+}

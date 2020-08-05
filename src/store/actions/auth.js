@@ -2,25 +2,54 @@ import axios from 'axios';
 import * as actionTypes from './actionTypes';
 import { act } from 'react-dom/test-utils';
 
-export const auth = (userName, email, password) => {
+/**
+ * 
+ * @param {String} userName Username of user entered in form data
+ * @param {String} email Email of the user
+ * @param {String} password Password of the user in form data
+ * @param {Boolean} isSignup A flag which indicates whether user is trying to signUp or signIn
+ */
+export const auth = (userName, email, password, isSignup) => {
     return dispatch => {
-        var temp = Math.floor(Math.random() * 10 );
+        var reqUrl;
         const authData = {
             user: {
-                username: userName,
                 email: email,
                 password: password
             }
         }
-        axios.post('https://conduit.productionready.io/api/users', authData)
+        if(isSignup) {
+            reqUrl = 'https://conduit.productionready.io/api/users';
+            authData.user.username = userName;
+        }
+        else {
+            reqUrl = 'https://conduit.productionready.io/api/users/login';
+        }
+        
+        axios.post(reqUrl, authData)
                 .then(res => {
                     console.log("Signup success", res);
-                    dispatch(authSuccess(res.user.token, res.user.id, res.user.username));
+                    localStorage.setItem('token', res.data.user.token);
+                    localStorage.setItem('userId', res.data.user.id);
+                    localStorage.setItem('userName', res.data.user.username);
+                    dispatch(authSuccess(res.data.user.token, res.data.user.id, res.data.user.username));
                 })
                 .catch(err => {
                     console.log("Error occured while sign up", err);
                     dispatch(authFail(err));
                 });
+    }
+}
+
+export const autoSignIn = () => {
+    return dispatch => {
+        let token = localStorage.getItem('token');
+        if(token) {
+            let userId = localStorage.getItem('userId');
+            let userName = localStorage.getItem('userName');
+            console.log("Auto signed");
+            dispatch(authSuccess(token, userId, userName));
+        }
     }
 }
 

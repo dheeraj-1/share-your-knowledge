@@ -2,20 +2,15 @@ import React from 'react';
 import './App.css';
 import PropTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Toolbar from './components/toolbar/Toolbar';
 import HeaderContent from './components/header/HeaderContent';
 import MainContent from './components/mainContent/MainContent';
 import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp/SignUp';
+import * as actions from './store/actions/auth';
 
-// function App(props) {
-//   return (
-//     <div className="App">
-//       <div>This div is clicked {props.counter} times!</div>
-//     </div>
-//   );
-// }
 
 const articles = [
     {title:'javascript', content:'details of javascript', author:'Shyam'},
@@ -27,6 +22,11 @@ const articles = [
   ];
 
 class App extends React.Component {
+
+  componentDidMount() {
+    this.props.checkForAutoSign();
+  }
+
   render() {
     return (
       <div className="App">
@@ -37,7 +37,8 @@ class App extends React.Component {
           <Switch>
             <Route path="/signin" component={SignIn}/>
             <Route path="/signup" component={SignUp}/>
-            <Route path="/" render={() => <MainContent articles={articles}></MainContent>}/>
+            <Route path="/" render={() => <MainContent articles={articles} isAuthenticated={this.props.isAuthenticated}
+              userName={this.props.userName}></MainContent>}/>
             <Redirect to="/" />
           </Switch> 
         </main>     
@@ -51,4 +52,17 @@ App.defaultProps = {
   counter: 100
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.token !== null,
+    userName: state.userName
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    checkForAutoSign: () => dispatch(actions.autoSignIn())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

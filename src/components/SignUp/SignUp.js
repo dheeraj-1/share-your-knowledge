@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import * as actions from '../../store/actions/auth';
 import * as actionTypes from '../../store/actions/actionTypes';
@@ -25,9 +26,14 @@ class SignUp extends Component {
                 <p>User already exists!</p>
             )
         }
+        let redirectToLoggedInUsers = null;
+        if(this.props.isAuthenticated) {
+            redirectToLoggedInUsers = <Redirect to="/"/>
+        }
 
         return(
             <div className={classes.SignUp}>
+                {redirectToLoggedInUsers}
                 {errorMessage}
                 <form onSubmit={this.submitHandler}>
                     <h2>Sign Up</h2>
@@ -63,7 +69,7 @@ class SignUp extends Component {
     submitHandler = (event) => {
         event.preventDefault();
         console.log('Form submitted to sign up', this.state);
-        this.props.onAuth(this.state.userName, this.state.email, this.state.password);
+        this.props.onAuth(this.state.userName, this.state.email, this.state.password, true);
     }
 }
 
@@ -79,7 +85,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (userName, email, password) => dispatch(actions.auth(userName, email, password))
+        onAuth: (userName, email, password, isSignup) => dispatch(actions.auth(userName, email, password, isSignup))
         //onAuth: (userName, email, password) => dispatch({type:"START", userName:userName, email: email, password:password})
     }
 }
