@@ -53,6 +53,17 @@ export const autoSignIn = () => {
     }
 }
 
+export const logout = () => {
+    
+    localStorage.setItem('token', null);
+    localStorage.setItem('userId', null);
+    localStorage.setItem('userName', null);
+    return {
+        type: actionTypes.LOGOUT
+    }
+   
+}
+
 export const authSuccess = (token, userId, userName) => {
     return {
         type: actionTypes.SIGNUP_SUCCESS,

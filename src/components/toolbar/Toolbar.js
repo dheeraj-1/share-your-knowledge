@@ -7,7 +7,7 @@ const toolbar = (props) => {
     return (
         <header className={classes.Toolbar}>
             <nav>
-                <NavigationItems></NavigationItems>
+                <NavigationItems isAuthenticated={props.isAuthenticated} userName={props.userName}></NavigationItems>
             </nav>
         </header>        
     )

@@ -10,6 +10,7 @@ import MainContent from './components/mainContent/MainContent';
 import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp/SignUp';
 import * as actions from './store/actions/auth';
+import Logout from './components/logout/Logout';
 
 
 const articles = [
@@ -30,13 +31,14 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Toolbar></Toolbar>
+        <Toolbar isAuthenticated={this.props.isAuthenticated} userName={this.props.userName}></Toolbar>
         <HeaderContent></HeaderContent>
          
         <main className="MainContent">
           <Switch>
             <Route path="/signin" component={SignIn}/>
             <Route path="/signup" component={SignUp}/>
+            <Route path="/logout" component={Logout}/>
             <Route path="/" render={() => <MainContent articles={articles} isAuthenticated={this.props.isAuthenticated}
               userName={this.props.userName}></MainContent>}/>
             <Redirect to="/" />

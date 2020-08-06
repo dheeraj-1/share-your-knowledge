@@ -23,12 +23,16 @@ const start = (state, action) => {
     return updateObject(state, { userName: action.userName, email: action.email, password: action.password});
 }
 
+const logout = (state, action) => {
+    return updateObject(state, { token: null, userId: null, userName: null});
+}
+
 const reducer = (state = initialState, action) => {
     console.log('reducer: ', state, action);
     switch(action.type) {
         case actionTypes.SIGNUP_SUCCESS: return authSuccess(state, action);
         case actionTypes.SIGNUP_FAIL: return authFail(state, action);
-        case "START": return start(state, action);
+        case actionTypes.LOGOUT: return logout(state, action);
         default:
             return state;
     }
