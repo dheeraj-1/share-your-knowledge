@@ -9,7 +9,7 @@ import HeaderContent from './components/header/HeaderContent';
 import MainContent from './components/mainContent/MainContent';
 import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp/SignUp';
-import * as actions from './store/actions/auth';
+import * as actions from './store/actions/index';
 import Logout from './components/logout/Logout';
 
 
@@ -26,6 +26,8 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.checkForAutoSign();
+    console.log("component did mount app js")
+    this.props.getArticles();
   }
 
   render() {
@@ -56,14 +58,16 @@ App.defaultProps = {
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.token !== null,
-    userName: state.userName
+    isAuthenticated: state.auth.token !== null,
+    userName: state.auth.userName,
+    articles: state.article.articles
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    checkForAutoSign: () => dispatch(actions.autoSignIn())
+    checkForAutoSign: () => dispatch(actions.autoSignIn()),
+    getArticles: () => dispatch(actions.getArticles())
   }
 }
 

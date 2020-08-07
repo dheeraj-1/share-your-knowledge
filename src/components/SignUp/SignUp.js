@@ -75,11 +75,11 @@ class SignUp extends Component {
 
 const mapStateToProps = state => {
     return {
-        token: state.token,
-        userId: state.userId,
-        userName: state.userName,
-        isAuthenticated: state.token !== null,
-        error: state.error
+        token: state.auth.token,
+        userId: state.auth.userId,
+        userName: state.auth.userName,
+        isAuthenticated: state.auth.token !== null,
+        error: state.auth.error
     }
 };
 

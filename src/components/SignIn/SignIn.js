@@ -54,11 +54,11 @@ class SignIn extends Component {
 
 const mapStateToProps = state => {
     return {
-        token: state.token,
-        userName: state.userName,
-        userId: state.userId,
-        isAuthenticated: state.token !== null,
-        error: state.error
+        token: state.auth.token,
+        userName: state.auth.userName,
+        userId: state.auth.userId,
+        isAuthenticated: state.auth.token !== null,
+        error: state.auth.error
     }
 }
 
