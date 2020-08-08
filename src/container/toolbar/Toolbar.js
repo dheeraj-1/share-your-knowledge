@@ -1,6 +1,6 @@
 import React from 'react';
 
-import NavigationItems from './navigationItems/NavigationItems';
+import NavigationItems from '../../components/navigationItems/NavigationItems';
 import classes from './Toolbar.module.css'
 
 const toolbar = (props) => {

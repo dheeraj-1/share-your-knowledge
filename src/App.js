@@ -4,13 +4,14 @@ import PropTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Toolbar from './components/toolbar/Toolbar';
+import Toolbar from './container/toolbar/Toolbar';
 import HeaderContent from './components/header/HeaderContent';
-import MainContent from './components/mainContent/MainContent';
+import MainContent from './container/mainContent/MainContent';
 import SignIn from './components/SignIn/SignIn';
 import SignUp from './components/SignUp/SignUp';
 import * as actions from './store/actions/index';
 import Logout from './components/logout/Logout';
+import Article from './components/articles/article/Article';
 
 
 const articles = [
@@ -41,10 +42,12 @@ class App extends React.Component {
             <Route path="/signin" component={SignIn}/>
             <Route path="/signup" component={SignUp}/>
             <Route path="/logout" component={Logout}/>
-            <Route path="/" render={() => <MainContent articles={articles} isAuthenticated={this.props.isAuthenticated}
+            <Route path="/articles" render={() => <MainContent articles={this.props.articles} isAuthenticated={this.props.isAuthenticated}
               userName={this.props.userName}></MainContent>}/>
-            <Redirect to="/" />
+              <Route path="/:id" component={Article}/>
+            
           </Switch> 
+          <Redirect to="/articles" />
         </main>     
         
       </div>
