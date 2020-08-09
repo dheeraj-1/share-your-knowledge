@@ -28,7 +28,7 @@ class SignUp extends Component {
         }
         let redirectToLoggedInUsers = null;
         if(this.props.isAuthenticated) {
-            redirectToLoggedInUsers = <Redirect to="/"/>
+            redirectToLoggedInUsers = <Redirect to="/articles"/>
         }
 
         return(

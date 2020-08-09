@@ -22,7 +22,7 @@ class SignIn extends Component {
         let redirectToLoggedInUsers = null;
         if(this.props.isAuthenticated) {
             redirectToLoggedInUsers = (
-                <Redirect to="/"/>
+                <Redirect to="/articles"/>
             )
         }
         return(

@@ -19,7 +19,7 @@ class MainContent extends Component {
    if(this.props.articles) {
       articles = this.props.articles.map((article, index) => {
         return (
-          <Link to={'/' + article.slug} key={article.slug}>
+          <Link to={'/articles/' + article.slug} key={article.slug}>
             <ArticleTile title={article.title}
             content={article.description}
             author={article.author}
