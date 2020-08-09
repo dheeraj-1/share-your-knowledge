@@ -12,6 +12,7 @@ import SignUp from './components/SignUp/SignUp';
 import * as actions from './store/actions/index';
 import Logout from './components/logout/Logout';
 import Article from './components/articles/article/Article';
+import NewArticle from './container/newArticle/NewArticle';
 
 
 const articles = [
@@ -43,6 +44,7 @@ class App extends React.Component {
             <Route path="/signup" component={SignUp}/>
             <Route path="/logout" component={Logout}/>
             <Route path="/articles/:id" exact component={Article}/>
+            <Route path="/createarticle" component={NewArticle}/>
             <Route path="/articles" render={() => <MainContent articles={this.props.articles} isAuthenticated={this.props.isAuthenticated}
               userName={this.props.userName}></MainContent>}/>
               

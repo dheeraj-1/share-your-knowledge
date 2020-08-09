@@ -38,6 +38,7 @@ class MainContent extends Component {
     <div className={classes.MainContent}>
         {loader}
         {articles}
+        
     </div>
     )
 

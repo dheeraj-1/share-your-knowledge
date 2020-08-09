@@ -5,5 +5,9 @@ export {
 } from './auth';
 
 export {
-    getArticles
+    getArticles,
+    getCurrentArticle,
+    postArticle,
+    deleteArticle,
+    updateArticle
 } from './articles';

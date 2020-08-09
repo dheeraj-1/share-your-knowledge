@@ -1,0 +1,34 @@
+.NewArticle {
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid gray;
+    box-shadow: 0 2px 3px #c88686;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.NewArticle input {
+    outline: none;
+    border: 1px solid lightgray;
+    background-color: white;
+    padding: 6px 10px;
+    box-sizing: border-box;
+    margin: 5px;
+    width: 50%;
+    border-radius: 5px;
+}
+.NewArticle textarea {
+    outline: none;
+    border: 1px solid lightgray;
+    background-color: white;
+    padding: 6px 10px;
+    box-sizing: border-box;
+    margin: 5px;
+    width: 50%;
+    height: 150px;
+    border-radius: 5px;
+}
+
+.NewArticle input:focus {
+    background-color: lightgray;
+}
