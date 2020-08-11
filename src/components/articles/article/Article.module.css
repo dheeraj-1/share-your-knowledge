@@ -1,0 +1,32 @@
+.Article {
+    text-align: initial;
+    border-top: 1px solid lightgray;
+    margin: 10px 50px;
+    padding: 10px;
+}
+
+.Article img {
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+}
+
+.Article p {
+    margin: 50px 0px;
+}
+
+.UserInfo {
+    display: inline-block;
+    vertical-align: top;
+    margin: 5px;
+}
+
+.UserInfo a {
+    font-weight: 600;
+}
+
+span {
+    color: #bbb;
+    font-size: .8rem;
+    display: block;
+}

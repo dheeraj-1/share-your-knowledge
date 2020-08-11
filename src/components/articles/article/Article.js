@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import Image from '../../../assets/smiley-cyrus.jpg';
 import * as actions from '../../../store/actions/index';
+import classes from './Article.module.css';
 
 
 class Article extends Component {
@@ -23,11 +24,11 @@ class Article extends Component {
         }
         if(this.props.currentArticle) {
             article = (
-                <div>
+                <div className={classes.Article}>
                     <h2>{this.props.currentArticle.title}</h2>
                     <div>
                         <img src={Image}></img>
-                        <div>
+                        <div className={classes.UserInfo}>
                             <a href="/">{this.props.currentArticle.author.username}</a><br/>
                             <span>{this.props.currentArticle.createdAt}</span>                   
                         </div>                
