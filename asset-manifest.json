@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/share-your-knowledge/static/css/main.5d74282f.chunk.css",
+    "main.js": "/share-your-knowledge/static/js/main.7060e27d.chunk.js",
+    "main.js.map": "/share-your-knowledge/static/js/main.7060e27d.chunk.js.map",
+    "runtime-main.js": "/share-your-knowledge/static/js/runtime-main.2aca1a7f.js",
+    "runtime-main.js.map": "/share-your-knowledge/static/js/runtime-main.2aca1a7f.js.map",
+    "static/js/2.b51667ec.chunk.js": "/share-your-knowledge/static/js/2.b51667ec.chunk.js",
+    "static/js/2.b51667ec.chunk.js.map": "/share-your-knowledge/static/js/2.b51667ec.chunk.js.map",
+    "index.html": "/share-your-knowledge/index.html",
+    "precache-manifest.b68403cceef409053591ba7abf8898a3.js": "/share-your-knowledge/precache-manifest.b68403cceef409053591ba7abf8898a3.js",
+    "service-worker.js": "/share-your-knowledge/service-worker.js",
+    "static/css/main.5d74282f.chunk.css.map": "/share-your-knowledge/static/css/main.5d74282f.chunk.css.map",
+    "static/js/2.b51667ec.chunk.js.LICENSE.txt": "/share-your-knowledge/static/js/2.b51667ec.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2aca1a7f.js",
+    "static/js/2.b51667ec.chunk.js",
+    "static/css/main.5d74282f.chunk.css",
+    "static/js/main.7060e27d.chunk.js"
+  ]
+}
