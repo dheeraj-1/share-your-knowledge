@@ -51,9 +51,10 @@ export const articleUpdated = (article) => {
     }
 }
 
-export const articleDeleted = () => {
+export const articleDeleted = (slug) => {
     return {
-        type: actionTypes.ARTICLE_DELETED_SUCCESSFULLY
+        type: actionTypes.ARTICLE_DELETED_SUCCESSFULLY,
+        deletedArticleSlug: slug
     }
 }
 
@@ -118,10 +119,21 @@ export const postArticle = (title, desc, body, token) => {
     }
 }
 
-export const deleteArticle = (slug) => {
+export const deleteArticle = (slug, token) => {
     console.log('delete', slug);
     return dispatch => {
-
+        axios.delete('https://conduit.productionready.io/api/articles/' + slug, {
+            headers: {
+              Authorization: 'Token ' + token
+            }
+          })
+            .then((res) => {
+                console.log('deleted successfully', res);
+                dispatch(articleDeleted(slug));
+            })
+            .catch((error) => {
+                console.log('Error while deleting', error);
+            })
     }
 }
 

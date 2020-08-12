@@ -30,3 +30,16 @@ span {
     font-size: .8rem;
     display: block;
 }
+button {
+    border: 1px solid green;
+    border-radius: 5px;
+    color: red;
+    background-color: lightblue;
+    padding: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+button:hover,
+button:active {
+    background-color: lemonchiffon;
+}

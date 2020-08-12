@@ -49,8 +49,11 @@ const articleUpdated = (state, action) => {
 }
 
 const articleDeleted = (state, action) => {
-    console.log('article deleted successfully');
-    return updateObject(state, { currentArticle: null});
+    console.log('article deleted successfully', state, action);
+    let newArticles = state.articles.filter((article) => {
+        return article.slug !== action.deletedArticleSlug;
+    });
+    return updateObject(state, { currentArticle: null, articles: newArticles});
 }
 
 const reducer = (state = initialState, action) => {
