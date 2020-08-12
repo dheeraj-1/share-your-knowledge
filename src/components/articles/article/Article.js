@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Image from '../../../assets/smiley-cyrus.jpg';
@@ -17,10 +16,36 @@ class Article extends Component {
     }
     
     render() {
-        let article = null;
+        let article = null, loginToComment = null, followAndFav = null, editAndDelete = null;
 
         if(this.props.match.params.id) {
             article = <p>Loading...</p>
+        }
+        // if(this.props.isAuthenticated && this.props.userName === this.props.currentArticle.author.username) {
+
+        // }
+        followAndFav = (
+            <div>
+                <button>Follow {this.props.userName}</button>
+                <button>Favorite Article</button>
+            </div>
+        );
+        if(this.props.isAuthenticated && this.props.currentArticle != null) {
+            if(this.props.userName === this.props.currentArticle.author.username) {
+                editAndDelete = (
+                    <div>
+                        <button>Edit Article</button>
+                        <button>Delete Article</button>
+                    </div>
+                );
+            }
+        }
+        else {
+            loginToComment = (
+                <div>
+                    <Link to="/signin">Sign in </Link>or <Link to="/signup"> Sign up</Link> to add comments on this article.
+                </div>
+            )
         }
         if(this.props.currentArticle) {
             article = (
@@ -31,10 +56,12 @@ class Article extends Component {
                         <div className={classes.UserInfo}>
                             <a href="/">{this.props.currentArticle.author.username}</a><br/>
                             <span>{this.props.currentArticle.createdAt}</span>                   
-                        </div>                
+                        </div>
+                              
                     </div>
                     
                     <p>{this.props.currentArticle.body}</p>
+                    {loginToComment}
                 </div>
             );
         }
@@ -45,7 +72,9 @@ class Article extends Component {
 
 const mapStateToProps = state => {
     return {
-        currentArticle: state.article.currentArticle
+        currentArticle: state.article.currentArticle,
+        userName: state.auth.userName,
+        isAuthenticated: state.auth.token !== null
     }
 }
 

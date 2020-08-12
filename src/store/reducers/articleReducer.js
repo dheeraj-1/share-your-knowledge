@@ -8,7 +8,9 @@ import { act } from 'react-dom/test-utils';
 const initialState = {
     error: null,
     articles: null,
-    currentArticle: null
+    currentArticle: null,
+    newArticle: null,
+    newArticleSubmitted: false
 }
 
 const getArticlesSuccess = (state, action) => {
@@ -23,7 +25,7 @@ const getArticlesFail = (state, action) => {
 
 const getCurrentArticlesSuccess = (state, action) => {
     console.log('Get currentArticle success', state, action);
-    return updateObject(state, { currentArticle: action.currentArticle});
+    return updateObject(state, { currentArticle: action.currentArticle, newArticleSubmitted: false});
 }
 
 const getCurrentArticlesFail = (state, action) => {
@@ -37,18 +39,18 @@ const resetCurrentArticleToNull = (state, action) => {
 }
 
 const articlePosted = (state, action) => {
-    console.log('article posted successfully');
-    updateObject(state, { currentArticle: action.currentArticle});
+    console.log('article posted successfully', state, action);
+    return updateObject(state, { newArticle: action.newArticle, newArticleSubmitted: action.newArticleSubmitted});
 }
 
 const articleUpdated = (state, action) => {
     console.log('article updated successfully');
-    updateObject(state, { currentArticle: action.currentArticle});
+    return updateObject(state, { currentArticle: action.currentArticle});
 }
 
 const articleDeleted = (state, action) => {
     console.log('article deleted successfully');
-    updateObject(state, { currentArticle: null});
+    return updateObject(state, { currentArticle: null});
 }
 
 const reducer = (state = initialState, action) => {

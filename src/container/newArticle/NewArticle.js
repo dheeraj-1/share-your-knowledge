@@ -13,14 +13,14 @@ class NewArticle extends Component {
         body: ''
     }
     render() {
-        let redirectToCurrentArticle = null;
-        if(this.props.currentArticle) {
-            redirectToCurrentArticle = <Redirect to={'articles/' + this.props.currentArticle.slug} />
+        let redirectToNewArticle = null;
+        if(this.props.newArticleSubmitted) {
+            redirectToNewArticle = <Redirect to={'articles/' + this.props.newArticle.slug} />
         }
 
         return (
             <div className={classes.NewArticle}>
-                {redirectToCurrentArticle}
+                {redirectToNewArticle}
                 <form onSubmit={this.submitHandler}>
                     <h2>Create own article</h2>
                     <input
@@ -67,7 +67,8 @@ const mapStateToProps = state => {
         token: state.auth.token,
         userId: state.auth.userId,
         userName: state.auth.userName,
-        currentArticle: state.article.currentArticle
+        newArticle: state.article.newArticle,
+        newArticleSubmitted: state.article.newArticleSubmitted
     }
 };
 

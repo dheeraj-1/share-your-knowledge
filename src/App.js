@@ -43,8 +43,8 @@ class App extends React.Component {
             <Route path="/signin" component={SignIn}/>
             <Route path="/signup" component={SignUp}/>
             <Route path="/logout" component={Logout}/>
+            <Route path="/createarticle" exact component={NewArticle}/>
             <Route path="/articles/:id" exact component={Article}/>
-            <Route path="/createarticle" component={NewArticle}/>
             <Route path="/articles" render={() => <MainContent articles={this.props.articles} isAuthenticated={this.props.isAuthenticated}
               userName={this.props.userName}></MainContent>}/>
               

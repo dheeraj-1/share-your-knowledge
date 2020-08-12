@@ -24,7 +24,8 @@ export const resetCurrentArticleToNull = (article) => {
 export const currentArticleReceived = (article) => {
     return {
         type: actionTypes.CURRENT_ARTICLE_RECEIVED,
-        currentArticle: article
+        currentArticle: article,
+        newArticleSubmitted: false
     }
 }
 
@@ -38,7 +39,8 @@ export const currentArticleNotReceived = (error) => {
 export const articlePosted = (article) => {
     return {
         type: actionTypes.ARTICLE_POSTED_SUCCESSFULLY,
-        article: article
+        newArticle: article,
+        newArticleSubmitted: true
     }
 }
 
@@ -91,7 +93,7 @@ export const getCurrentArticle = (slug) => {
 export const postArticle = (title, desc, body, token) => {
     console.log('post article req', token);
     return dispatch => {
-        dispatch(resetCurrentArticleToNull());
+        //dispatch(resetCurrentArticleToNull());
         const articleData = {
             article: {
                 title: title,
@@ -107,7 +109,7 @@ export const postArticle = (title, desc, body, token) => {
           })
             .then(res => {
                 console.log('Articles posted', res);
-                dispatch(currentArticleReceived(res.data.article))
+                dispatch(articlePosted(res.data.article))
             })
             .catch(error => {
                 console.log('Article not posted', error);
