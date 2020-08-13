@@ -18,7 +18,6 @@ class Article extends Component {
     }
 
     componentDidMount() {
-        console.log('[Article componentdidmount]', this.props.match.params.id, this.state.currentArticle);
         axios.get('https://conduit.productionready.io/api/articles/' + this.props.match.params.id)
             .then((res) => {
                 this.setState({currentArticle: res.data.article});
@@ -71,8 +70,8 @@ class Article extends Component {
         if(this.state.currentArticle) {
             let tags = null;
             if(this.state.currentArticle.tagList) {
-                tags = this.state.currentArticle.tagList.map((tag) => {
-                    return <li>{tag}</li>
+                tags = this.state.currentArticle.tagList.map((tag, index) => {
+                    return <li key={index}>{tag}</li>
                 })
             }
 

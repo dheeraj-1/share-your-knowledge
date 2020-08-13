@@ -7,8 +7,8 @@ import classes from './ArticleTile.module.css';
 const articleTile = (props) => {
     let tags = null;
     if(props.tags) {
-        tags = props.tags.map((tag) => {
-            return <li>{tag}</li>
+        tags = props.tags.map((tag, index) => {
+            return <li key={tag}>{tag}</li>
         })
     }
 

@@ -34,13 +34,10 @@ class App extends React.Component {
             <Route path="/createarticle" exact component={NewArticle}/>
             <Route key={this.props.userName} exact path="/myarticles" render={() => <MainContent author={this.props.userName}/>}/>
             <Route path="/articles/:id" exact component={Article}/>
-            <Route key="" exact path="/articles" render={() => <MainContent author=""/>}/>
-              
-            
+            <Route key="" exact path="/articles" render={() => <MainContent author=""/>}/>            
           </Switch> 
           <Redirect to="/articles" />
-        </main>     
-        
+        </main>
       </div>
     );
   }

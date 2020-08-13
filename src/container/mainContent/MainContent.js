@@ -11,7 +11,7 @@ class MainContent extends Component {
     getArticlesByAuthor: ''
   }
   showFullArticle = (id) => {
-    console.log("Clicked", id);
+    console.log("Clicked");
   }
 
   componentDidMount() {

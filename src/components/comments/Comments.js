@@ -12,7 +12,6 @@ class Comments extends Component {
     }
 
     componentDidMount() {
-        console.log('Component did mount [Comments]', this);
         let reqUrl = 'https://conduit.productionready.io/api/articles/' + this.props.slug + '/comments';
         axios.get(reqUrl)
             .then(res => {
@@ -78,7 +77,6 @@ class Comments extends Component {
     }
 
     deleteCommentHandler = (event, commentId) =>{
-        console.log('Delete comment', this.props, event, commentId);
         let reqUrl = 'https://conduit.productionready.io/api/articles/' + this.props.slug + '/comments/' + commentId;
         axios.delete(reqUrl, {
             headers: {
