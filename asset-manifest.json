@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/share-your-knowledge/static/css/main.dc2bd835.chunk.css",
-    "main.js": "/share-your-knowledge/static/js/main.9753c3c6.chunk.js",
-    "main.js.map": "/share-your-knowledge/static/js/main.9753c3c6.chunk.js.map",
+    "main.js": "/share-your-knowledge/static/js/main.1f4ec002.chunk.js",
+    "main.js.map": "/share-your-knowledge/static/js/main.1f4ec002.chunk.js.map",
     "runtime-main.js": "/share-your-knowledge/static/js/runtime-main.2aca1a7f.js",
     "runtime-main.js.map": "/share-your-knowledge/static/js/runtime-main.2aca1a7f.js.map",
     "static/js/2.a404a845.chunk.js": "/share-your-knowledge/static/js/2.a404a845.chunk.js",
     "static/js/2.a404a845.chunk.js.map": "/share-your-knowledge/static/js/2.a404a845.chunk.js.map",
     "index.html": "/share-your-knowledge/index.html",
-    "precache-manifest.c749b027c09122f2d5f12536538142d9.js": "/share-your-knowledge/precache-manifest.c749b027c09122f2d5f12536538142d9.js",
+    "precache-manifest.6f22c33086f079ecb385861f3848d3c2.js": "/share-your-knowledge/precache-manifest.6f22c33086f079ecb385861f3848d3c2.js",
     "service-worker.js": "/share-your-knowledge/service-worker.js",
     "static/css/main.dc2bd835.chunk.css.map": "/share-your-knowledge/static/css/main.dc2bd835.chunk.css.map",
     "static/js/2.a404a845.chunk.js.LICENSE.txt": "/share-your-knowledge/static/js/2.a404a845.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.2aca1a7f.js",
     "static/js/2.a404a845.chunk.js",
     "static/css/main.dc2bd835.chunk.css",
-    "static/js/main.9753c3c6.chunk.js"
+    "static/js/main.1f4ec002.chunk.js"
   ]
 }
