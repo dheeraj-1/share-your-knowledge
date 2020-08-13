@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom';
+import axios from 'axios';
 
 import * as actions from '../../store/actions/index';
 import classes from './NewArticle.module.css';
@@ -10,12 +11,29 @@ class NewArticle extends Component {
     state = {
         title: '',
         desc: '',
-        body: ''
+        body: '',
+        slug: '',
+        postedArticleId: null,
+        updatingArticle: false
     }
+
+    componentDidMount() {
+        console.log('component did mount', this);
+        if(this.props.location.article) {
+            this.setState({
+                title: this.props.location.article.title,
+                desc: this.props.location.article.desc,
+                body: this.props.location.article.body,
+                slug: this.props.location.article.slug,
+                updatingArticle: true
+            })
+        }
+    }
+
     render() {
         let redirectToNewArticle = null;
-        if(this.props.newArticleSubmitted) {
-            redirectToNewArticle = <Redirect to={'articles/' + this.props.newArticle.slug} />
+        if(this.state.postedArticleId) {
+            redirectToNewArticle = <Redirect to={'articles/' + this.state.postedArticleId} />
         }
 
         return (
@@ -57,8 +75,37 @@ class NewArticle extends Component {
     }
     submitHandler = (event) => {
         event.preventDefault();
-        console.log('Form submitted', this.state);
-        this.props.onSubmit(this.state.title, this.state.desc, this.state.body, this.props.token);
+        const articleData = {
+            article: {
+                title: this.state.title,
+                description: this.state.desc,
+                body: this.state.body
+              }
+        }
+        let reqUrl = 'https://conduit.productionready.io/api/articles';
+        if(this.state.updatingArticle) {
+            axios.put(reqUrl + '/' + this.state.slug, articleData, {
+                headers: {
+                  Authorization: 'Token ' + this.props.token
+                }
+              })
+                .then(res => {
+                    console.log('Articles posted', res);
+                    this.setState({postedArticleId: res.data.article.slug});
+                })
+        }
+        else {
+            axios.post(reqUrl, articleData, {
+                headers: {
+                  Authorization: 'Token ' + this.props.token
+                }
+              })
+                .then(res => {
+                    console.log('Articles posted', res);
+                    this.setState({postedArticleId: res.data.article.slug});
+                })
+        }
+        
     }
 }
 
@@ -66,16 +113,8 @@ const mapStateToProps = state => {
     return {
         token: state.auth.token,
         userId: state.auth.userId,
-        userName: state.auth.userName,
-        newArticle: state.article.newArticle,
-        newArticleSubmitted: state.article.newArticleSubmitted
+        userName: state.auth.userName
     }
 };
 
-const mapDispatchToProps  = dispatch => {
-    return {
-        onSubmit: (title, desc, body, token) => dispatch(actions.postArticle(title, desc, body, token))
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(NewArticle);
+export default connect(mapStateToProps)(NewArticle);

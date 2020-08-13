@@ -29,7 +29,6 @@ class App extends React.Component {
   componentDidMount() {
     this.props.checkForAutoSign();
     console.log("component did mount app js")
-    this.props.getArticles();
   }
 
   render() {
@@ -40,13 +39,13 @@ class App extends React.Component {
          
         <main className="MainContent">
           <Switch>
-            <Route path="/signin" component={SignIn}/>
+            <Route path="/signin" exact component={SignIn}/>
             <Route path="/signup" component={SignUp}/>
             <Route path="/logout" component={Logout}/>
             <Route path="/createarticle" exact component={NewArticle}/>
+            <Route key={this.props.userName} exact path="/myarticles" render={() => <MainContent author={this.props.userName}/>}/>
             <Route path="/articles/:id" exact component={Article}/>
-            <Route path="/articles" render={() => <MainContent articles={this.props.articles} isAuthenticated={this.props.isAuthenticated}
-              userName={this.props.userName}></MainContent>}/>
+            <Route key="" exact path="/articles" render={() => <MainContent author=""/>}/>
               
             
           </Switch> 
@@ -65,15 +64,13 @@ App.defaultProps = {
 const mapStateToProps = state => {
   return {
     isAuthenticated: state.auth.token !== null,
-    userName: state.auth.userName,
-    articles: state.article.articles
+    userName: state.auth.userName
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    checkForAutoSign: () => dispatch(actions.autoSignIn()),
-    getArticles: () => dispatch(actions.getArticles())
+    checkForAutoSign: () => dispatch(actions.autoSignIn())
   }
 }
 

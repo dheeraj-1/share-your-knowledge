@@ -94,7 +94,6 @@ export const getCurrentArticle = (slug) => {
 export const postArticle = (title, desc, body, token) => {
     console.log('post article req', token);
     return dispatch => {
-        //dispatch(resetCurrentArticleToNull());
         const articleData = {
             article: {
                 title: title,
