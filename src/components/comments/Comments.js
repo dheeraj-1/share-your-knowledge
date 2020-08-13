@@ -25,7 +25,7 @@ class Comments extends Component {
         let comments = null;
         if(this.state.comments) {
             comments = this.state.comments.map((comment) => {
-                return <Comment key={comment.id} comment={comment}/>
+                return <Comment key={comment.id} comment={comment} onDelete={this.deleteCommentHandler}/>
             })
         }
         return (
@@ -65,6 +65,19 @@ class Comments extends Component {
             })
             .then(res => {
                 this.setState({comments: this.state.comments.concat(res.data.comment), commentText: ''});
+            })
+    }
+
+    deleteCommentHandler = (event, commentId) =>{
+        console.log('Delete comment', this.props, event, commentId);
+        let reqUrl = 'https://conduit.productionready.io/api/articles/' + this.props.slug + '/comments/' + commentId;
+        axios.delete(reqUrl, {
+            headers: {
+                Authorization: 'Token ' + this.props.token
+            }
+        })
+            .then((res) => {
+                this.setState({comments: this.state.comments.filter((comment) => comment.id !== commentId)});
             })
     }
         

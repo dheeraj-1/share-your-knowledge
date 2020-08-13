@@ -18,3 +18,7 @@
     display: inline-block;
     margin: 5px;
 }
+
+.buttons {
+    float: right;
+}
