@@ -9,12 +9,10 @@ const initialState = {
 }
 
 const authSuccess = (state, action) => {
-    console.log('received in reducer for success', state, action);
     return updateObject(state, { token: action.token, userName: action.userName, userId: action.userId});
 }
 
 const authFail = (state, action) => {
-    console.log('received in reducer for fail', state, action);
     return updateObject(state, { error: action.error});
 }
 
@@ -23,7 +21,6 @@ const logout = (state, action) => {
 }
 
 const reducer = (state = initialState, action) => {
-    console.log('reducer: ', state, action);
     switch(action.type) {
         case actionTypes.SIGNUP_SUCCESS: return authSuccess(state, action);
         case actionTypes.SIGNUP_FAIL: return authFail(state, action);

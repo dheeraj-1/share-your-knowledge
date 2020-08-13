@@ -17,7 +17,6 @@ class NewArticle extends Component {
     }
 
     componentDidMount() {
-        console.log('component did mount', this);
         if(this.props.location.article) {
             this.setState({
                 title: this.props.location.article.title,
@@ -89,7 +88,6 @@ class NewArticle extends Component {
                 }
               })
                 .then(res => {
-                    console.log('Articles posted', res);
                     this.setState({postedArticleId: res.data.article.slug});
                 })
         }
@@ -100,7 +98,6 @@ class NewArticle extends Component {
                 }
               })
                 .then(res => {
-                    console.log('Articles posted', res);
                     this.setState({postedArticleId: res.data.article.slug});
                 })
         }

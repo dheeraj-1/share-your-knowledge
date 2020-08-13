@@ -20,11 +20,9 @@ class Article extends Component {
         console.log('[Article componentdidmount]', this.props.match.params.id, this.state.currentArticle);
         axios.get('https://conduit.productionready.io/api/articles/' + this.props.match.params.id)
             .then((res) => {
-                console.log('Successss', res);
                 this.setState({currentArticle: res.data.article});
             })
             .catch((error) => {
-                console.log('Error while fetching this articleee', error);
                 this.setState({error: error});
             })
     }
@@ -109,16 +107,11 @@ class Article extends Component {
             }
           })
             .then((res) => {
-                console.log('deleted successfully', res);
                 this.setState({articleDeleted: true});
-            })
-            .catch((error) => {
-                console.log('Error while deleting', error);
             })
     }
 
     updateArticleHandler = () => {
-        console.log('to update article');
         this.setState({updateArticle: true});
     }
 }

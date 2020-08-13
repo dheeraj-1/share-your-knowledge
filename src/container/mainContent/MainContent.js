@@ -23,7 +23,6 @@ class MainContent extends Component {
     }
     axios.get(reqUrl)
         .then(res => {
-            console.log('Articles received', res);
             this.setState({articles: res.data.articles})
         })
         

@@ -13,10 +13,6 @@ class SignUp extends Component {
         password: ''
     }
 
-    componentDidMount() {
-        console.log("componentdidmount: ", this.props.isAuthenticated, this.props.error);
-    }
-
     render() {
 
         let errorMessage = null;
@@ -67,7 +63,6 @@ class SignUp extends Component {
     }
     submitHandler = (event) => {
         event.preventDefault();
-        console.log('Form submitted to sign up', this.state);
         this.props.onAuth(this.state.userName, this.state.email, this.state.password, true);
     }
 }

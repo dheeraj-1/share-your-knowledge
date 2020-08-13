@@ -18,7 +18,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.props.checkForAutoSign();
-    console.log("component did mount app js")
   }
 
   render() {

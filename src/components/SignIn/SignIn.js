@@ -46,7 +46,6 @@ class SignIn extends Component {
     }
     submitHandler = (event) => {
         event.preventDefault();
-        console.log('Form submitted', this.state);
         this.props.onAuth(null, this.state.email, this.state.password, false);
     }
 }
