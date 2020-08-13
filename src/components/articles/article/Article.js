@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import Image from '../../../assets/smiley-cyrus.jpg';
 import classes from './Article.module.css';
+import Comments from '../../comments/Comments';
 
 
 class Article extends Component {
@@ -83,7 +84,9 @@ class Article extends Component {
                     {followAndFav}
                     <p>{this.state.currentArticle.body}</p>
                     {loginToComment}
+                    <Comments slug={this.props.match.params.id}/>
                 </div>
+                
             );
         }
 
