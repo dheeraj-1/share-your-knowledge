@@ -11,6 +11,7 @@ class NewArticle extends Component {
         title: '',
         desc: '',
         body: '',
+        tags: '',
         slug: '',
         postedArticleId: null,
         updatingArticle: false
@@ -60,6 +61,13 @@ class NewArticle extends Component {
                         value={this.state.body}
                         onChange={(event) => this.changeHandler(event, "body")}
                         ></textarea><br/>
+                    <input
+                        type='text'
+                        name='tags'
+                        placeholder='Enter Tags'
+                        value={this.state.tags}
+                        onChange={(event) => this.changeHandler(event, "tags")}
+                        ></input><br/>
                     <button type="submit">Post Article</button>
                 </form>
             </div>
@@ -77,7 +85,8 @@ class NewArticle extends Component {
             article: {
                 title: this.state.title,
                 description: this.state.desc,
-                body: this.state.body
+                body: this.state.body,
+                tagList: this.state.tags.split(',')
               }
         }
         let reqUrl = 'https://conduit.productionready.io/api/articles';

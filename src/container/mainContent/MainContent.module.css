@@ -1,4 +1,9 @@
 .MainContent {
     background-color: white;
-    
+    width: 80%;
+}
+
+.Author {
+    text-align: left;
+    margin: 10px 50px;
 }

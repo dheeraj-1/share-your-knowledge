@@ -13,7 +13,6 @@ class Comment extends Component {
         if(this.props.userName === this.props.comment.author.username) {
             editAndDeleteButtons = (
                 <div className={classes.buttons}>
-                    <button>Edit Comment</button>
                     <button onClick={(event, commentId) => this.props.onDelete(event, this.props.comment.id)}>Delete Comment</button>
                 </div> 
             )

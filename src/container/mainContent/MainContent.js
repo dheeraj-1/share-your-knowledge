@@ -41,6 +41,7 @@ class MainContent extends Component {
             content={article.description}
             author={article.author}
             createdAt={article.createdAt}
+            tags={article.tagList}
             key={article.slug}
             clicked={() => {this.showFullArticle(article.slug)}}/>
           </Link>
@@ -53,6 +54,7 @@ class MainContent extends Component {
 
     return(
     <div className={classes.MainContent}>
+      <h2 className={classes.Author}>{this.props.author ? 'My Articles ' : 'Global Feed'}</h2>
         {loader}
         {articles}
         

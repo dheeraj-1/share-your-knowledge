@@ -43,3 +43,18 @@ button:hover,
 button:active {
     background-color: lemonchiffon;
 }
+
+.Tags {
+    display: flex;
+    padding: 0px;
+}
+
+.Tags li {
+    display: flex;
+    border: 1px solid lightgray;
+    padding: 2px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    margin: 2px;
+    color: #bbb;
+}

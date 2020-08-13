@@ -5,6 +5,13 @@ import Image from '../../assets/smiley-cyrus.jpg';
 import classes from './ArticleTile.module.css';
 
 const articleTile = (props) => {
+    let tags = null;
+    if(props.tags) {
+        tags = props.tags.map((tag) => {
+            return <li>{tag}</li>
+        })
+    }
+
     return (
         <div className={classes.ArticleTile}>
             <div>
@@ -21,8 +28,10 @@ const articleTile = (props) => {
             <div onClick={props.clicked}>
                 <h3>{props.title}</h3>
                 <p>{props.content}</p>
+                <ul className={classes.Tags}>{tags}</ul>
                 <span>Read more...</span>
             </div>
+            
         </div>
     );
 }

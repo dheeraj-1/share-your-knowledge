@@ -36,6 +36,7 @@ class Article extends Component {
             article = <p>Loading...</p>
         }
 
+        
        
         if(this.state.currentArticle) {
             followAndFav = (
@@ -68,6 +69,13 @@ class Article extends Component {
             redirectToArticlesPage = <Redirect to='/articles'></Redirect>
         }
         if(this.state.currentArticle) {
+            let tags = null;
+            if(this.state.currentArticle.tagList) {
+                tags = this.state.currentArticle.tagList.map((tag) => {
+                    return <li>{tag}</li>
+                })
+            }
+
             article = (
                 <div className={classes.Article}>
                     {redirectToArticlesPage}
@@ -83,6 +91,8 @@ class Article extends Component {
                     {editAndDelete}
                     {followAndFav}
                     <p>{this.state.currentArticle.body}</p>
+
+                    <ul className={classes.Tags}>{tags}</ul>
                     {loginToComment}
                     <Comments slug={this.props.match.params.id}/>
                 </div>
