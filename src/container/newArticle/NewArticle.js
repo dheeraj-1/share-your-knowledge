@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom';
 import axios from 'axios';
 
-import * as actions from '../../store/actions/index';
 import classes from './NewArticle.module.css';
 
 class NewArticle extends Component {
@@ -111,9 +110,9 @@ class NewArticle extends Component {
 
 const mapStateToProps = state => {
     return {
-        token: state.auth.token,
-        userId: state.auth.userId,
-        userName: state.auth.userName
+        token: state.token,
+        userId: state.userId,
+        userName: state.userName
     }
 };
 

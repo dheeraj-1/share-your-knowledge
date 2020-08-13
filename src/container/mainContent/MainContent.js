@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import {Route, Link} from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import axios from 'axios';
 import classes from './MainContent.module.css';
 import ArticleTile from '../../components/articles/ArticleTile';
-import Article from '../../components/articles/article/Article';
-import { articlesNotReceived } from '../../store/actions/articles';
 
 class MainContent extends Component {
 

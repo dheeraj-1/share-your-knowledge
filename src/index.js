@@ -5,18 +5,12 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 import authReducer from './store/reducers/authReducer';
-import articleReducer from './store/reducers/articleReducer';
 
-const rootReducer = combineReducers({
-  auth: authReducer,
-  article: articleReducer
-});
-
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(authReducer, applyMiddleware(thunk));
 
 const app = (
   <Provider store = {store}>

@@ -1,6 +1,5 @@
 import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../../utils/utility';
-import { act } from 'react-dom/test-utils';
 
 const initialState = {
     token: null,
@@ -17,10 +16,6 @@ const authSuccess = (state, action) => {
 const authFail = (state, action) => {
     console.log('received in reducer for fail', state, action);
     return updateObject(state, { error: action.error});
-}
-
-const start = (state, action) => {
-    return updateObject(state, { userName: action.userName, email: action.email, password: action.password});
 }
 
 const logout = (state, action) => {

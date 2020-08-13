@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 import * as actions from '../../store/actions/auth';
-import * as actionTypes from '../../store/actions/actionTypes';
 
 import classes from './SignUp.module.css';
 
@@ -75,18 +74,17 @@ class SignUp extends Component {
 
 const mapStateToProps = state => {
     return {
-        token: state.auth.token,
-        userId: state.auth.userId,
-        userName: state.auth.userName,
-        isAuthenticated: state.auth.token !== null,
-        error: state.auth.error
+        token: state.token,
+        userId: state.userId,
+        userName: state.userName,
+        isAuthenticated: state.token !== null,
+        error: state.error
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: (userName, email, password, isSignup) => dispatch(actions.auth(userName, email, password, isSignup))
-        //onAuth: (userName, email, password) => dispatch({type:"START", userName:userName, email: email, password:password})
     }
 }
 

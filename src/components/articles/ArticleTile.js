@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import Image from '../../assets/smiley-cyrus.jpg';
 
@@ -8,7 +8,7 @@ const articleTile = (props) => {
     return (
         <div className={classes.ArticleTile}>
             <div>
-                <img src={Image}></img>
+                <img src={Image} alt='author'></img>
                 <div className={classes.UserInfo}>
                     {props.author.username}<br/>
                     <span>{props.createdAt}</span>                   

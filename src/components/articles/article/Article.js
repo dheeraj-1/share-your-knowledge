@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { Route, Link, Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
 import Image from '../../../assets/smiley-cyrus.jpg';
-import * as actions from '../../../store/actions/index';
 import classes from './Article.module.css';
-import { findAllByTestId } from '@testing-library/react';
-import { articlePosted } from '../../../store/actions/articles';
 
 
 class Article extends Component {
@@ -77,7 +74,7 @@ class Article extends Component {
                     {redirectToArticlesPage}
                     <h2>{this.state.currentArticle.title}</h2>
                     <div>
-                        <img src={Image}></img>
+                        <img src={Image} alt='author'></img>
                         <div className={classes.UserInfo}>
                             <a href="/">{this.state.currentArticle.author.username}</a><br/>
                             <span>{this.state.currentArticle.createdAt}</span>                   
@@ -128,9 +125,9 @@ class Article extends Component {
 
 const mapStateToProps = state => {
     return {
-        userName: state.auth.userName,
-        isAuthenticated: state.auth.token !== null,
-        token: state.auth.token
+        userName: state.userName,
+        isAuthenticated: state.token !== null,
+        token: state.token
     }
 }
 

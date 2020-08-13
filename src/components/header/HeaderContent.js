@@ -5,7 +5,7 @@ import Logo from '../../assets/logo.png';
 const headerContent = (props) => {
     return (
         <div className={classes.HeaderContent}>
-            <img src={Logo}></img>
+            <img src={Logo} alt='header logo'></img>
             <p>A platform to share your knowledge!</p>
         </div>
     )
