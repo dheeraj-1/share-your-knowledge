@@ -22,22 +22,31 @@ class Comments extends Component {
     }
 
     render() {
-        let comments = null;
+        let comments = null, writeComments = null;
         if(this.state.comments) {
             comments = this.state.comments.map((comment) => {
                 return <Comment key={comment.id} comment={comment} onDelete={this.deleteCommentHandler}/>
             })
         }
+
+        if(this.props.isAuthenticated) {
+            writeComments = (
+                <div className={classes.Comments}>
+                    
+                    <textarea
+                            type='text'
+                            name='commentText'
+                            placeholder='Write a comment'
+                            value={this.state.commentText}
+                            onChange={(event) => this.changeHandler(event, "commentText")}
+                            ></textarea><br/>
+                    <button type="submit" onClick={this.submitHandler}>Post Comment</button>
+                </div>
+            );
+        }
         return (
-            <div className={classes.Comments}>
-                <textarea
-                        type='text'
-                        name='commentText'
-                        placeholder='Write a comment'
-                        value={this.state.commentText}
-                        onChange={(event) => this.changeHandler(event, "commentText")}
-                        ></textarea><br/>
-                <button type="submit" onClick={this.submitHandler}>Post Comment</button>
+            <div>
+                {writeComments}
                 <div>
                     {comments}
                 </div>
@@ -87,7 +96,8 @@ const mapStateToProps = state => {
     return {
         token: state.token,
         userId: state.userId,
-        userName: state.userName
+        userName: state.userName,
+        isAuthenticated: state.token != null
     }
 };
 export default connect(mapStateToProps)(Comments);
